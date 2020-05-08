@@ -6,7 +6,7 @@ Than runn project localy on http://localhost:3000/ with:
 
 `npm start`
 
-Soon  a live production version will be avaleble :)
+Soon  a live production version will be availeble :)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
