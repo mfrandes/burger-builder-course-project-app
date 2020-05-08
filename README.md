@@ -1,4 +1,4 @@
-To start the project on your system sipmly download and install dependencies with:
+To start the project on your system just download and install dependencies with:
 
 `npm install`
 
