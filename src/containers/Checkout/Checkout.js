@@ -4,7 +4,7 @@ import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSumm
 
 class Checkout extends Component {
    state = {
-      ingeredients: {
+      ingredients: {
          salad: 1,
          meat: 1,
          cheese: 1,
@@ -20,13 +20,23 @@ class Checkout extends Component {
       this.props.history.push('/checkout/contact-data');
    }
 
+   componentDidMount() {
+      const query = new URLSearchParams(this.props.location.search);
+      const ingredients = {};
+      for(const param of query.entries()){
+         ingredients[param[0]] = +param[1]
+      }
+
+      this.setState({ingredients: ingredients})
+   }
+
    render() {
       return (
          <div>
             <CheckoutSummary
                checkoutContinue={this.checkoutContinueHandler}
                checkoutCancel={this.checkoutCancelHandler}
-               ingredients={this.state.ingeredients} />
+               ingredients={this.state.ingredients} />
          </div>
       );
    }
