@@ -99,34 +99,38 @@ class BurgerBuilder extends Component {
         this.setState({ purchasing: false });
     }
 
+    // purchaseContinueHandles = () => {
+    //     // alert('Bazinga');
+    //     this.setState({ loading: true });
+    //     const order = {
+    //         ingredients: this.state.ingredients,
+    //         price: this.state.totalPrice,
+    //         customer: {
+    //             name: 'Mircea Frandes',
+    //             address: {
+    //                 street: 'moonstreet 26',
+    //                 zipCode: '125',
+    //                 country: 'Romania'
+    //             },
+    //             email: 'test@test.com',
+    //             delliverMethod: 'Drone'
+    //         }
+    //     }
+    //     axios.post('/orders.json', order)
+    //         .then(response => {
+    //             this.setState({ loading: false, purchasing: false });
+
+    //             console.log(response)
+    //         })
+    //         .catch(error => {
+    //             this.setState({ loading: true, purchasing: false });
+
+    //             console.log(error)
+    //         });
+    // }
+
     purchaseContinueHandles = () => {
-        // alert('Bazinga');
-        this.setState({ loading: true });
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'Mircea Frandes',
-                address: {
-                    street: 'moonstreet 26',
-                    zipCode: '125',
-                    country: 'Romania'
-                },
-                email: 'test@test.com',
-                delliverMethod: 'Drone'
-            }
-        }
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({ loading: false, purchasing: false });
-
-                console.log(response)
-            })
-            .catch(error => {
-                this.setState({ loading: true, purchasing: false });
-
-                console.log(error)
-            });
+        this.props.history.push("/checkout")
     }
 
     render() {

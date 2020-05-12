@@ -1,9 +1,12 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import classes from './Burger.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = (props) => {
+    console.log(props);
+    
     let transformedIngredients = Object.keys(props.ingredients)
         .map(ingKey => {
             return [...Array(props.ingredients[ingKey])] //return an array with a given number of empty elements
@@ -15,7 +18,7 @@ const burger = (props) => {
             return arr.concat(el)
         }, []); // we need to reduce the array in order to check if there are ingreidens added at all plain JS array.redice()
 
-    if(transformedIngredients.length === 0){
+    if (transformedIngredients.length === 0) {
         transformedIngredients = <p>Please start add ingredients</p>
     }
 
@@ -28,7 +31,7 @@ const burger = (props) => {
     );
 };
 
-export default burger;
+export default withRouter(burger);
 
 // transformedIngredients = is a way to transform a object in to an array of burger ingredients where the value is important fro me to 
 // decide how many ingredients we need and the key indicates what ingredient we need this is kewl stuff

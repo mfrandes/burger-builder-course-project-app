@@ -6,7 +6,7 @@
 }
 
 .NavigationItem a {
-  color: #8f5c2c;
+  color: #8F5C2C;
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;
@@ -16,10 +16,9 @@
 .NavigationItem a.active,
 .NavigationItem a:active,
 .NavigationItem a:hover {
-  color: #40a4c8;
+  color: #40A4C8;
 }
-
-@media (min-width: 600px) {
+@media (min-width: 500px) {
   .NavigationItem {
     margin: 0;
     display: flex;
@@ -38,8 +37,8 @@
   .NavigationItem a.active,
   .NavigationItem a:active,
   .NavigationItem a:hover {
-    background-color: #8f5c2c;
-    border-bottom: 4px solid #40a4c8;
+    background-color: #8F5C2C;
+    border-bottom: 4px solid #40A4C8;
     color: white;
   }
 }
