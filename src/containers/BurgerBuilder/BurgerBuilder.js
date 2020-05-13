@@ -15,7 +15,6 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class BurgerBuilder extends Component {
     state = {
-        purchaseable: false,
         purchasing: false,
         loading: false,
         errorMode: false
@@ -67,17 +66,8 @@ class BurgerBuilder extends Component {
         this.setState({ purchasing: false });
     }
 
-    purchaseContinueHandles = () => {
-        const queryParams = [];
-        for (const ing in this.props.ings) {
-            queryParams.push(encodeURIComponent(ing) + '=' + encodeURIComponent(this.props.ings[ing]));
-        }
-        queryParams.push('price=' + this.props.price);
-        const queryString = queryParams.join('&');
-        this.props.history.push({
-            pathname: "/checkout",
-            search: '?' + queryString
-        })
+    purchaseContinueHandler = () => {
+        this.props.history.push("/checkout");
     }
 
     render() {
@@ -108,7 +98,7 @@ class BurgerBuilder extends Component {
             orderSummary = <OrderSummary
                 ingredients={this.props.ings}
                 purchaseCancelled={this.cancelPurchaseHandler}
-                purchaseContinued={this.purchaseContinueHandles}
+                purchaseContinued={this.purchaseContinueHandler}
                 price={this.props.price}
             />;
         }
