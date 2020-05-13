@@ -25,25 +25,25 @@ class BurgerBuilder extends Component {
         errorMode: false
     }
 
-    componentDidMount() {
-        axios.get('https://react-my-burger-6485d.firebaseio.com/ingredients.json')
-            .then(response => {
-                console.log(response);
-                const ingredients = Object.keys(response.data);
-                let totalPrice = this.state.totalPrice;
-                ingredients.forEach(ingredient => {
-                    const priceAddition = INGREDIENT_PRICES[ingredient];
-                    const pricePerIng = response.data[ingredient] * priceAddition;
-                    totalPrice = totalPrice + pricePerIng;
-                    console.log(totalPrice);
-                });
-                this.setState({ ingredients: response.data, totalPrice: totalPrice });
-                this.updatePurchaseState(response.data);
-            })
-            .catch(error => {
-                this.setState({ errorMode: true });
-            });
-    }
+    // componentDidMount() {
+    //     axios.get('https://react-my-burger-6485d.firebaseio.com/ingredients.json')
+    //         .then(response => {
+    //             console.log(response);
+    //             const ingredients = Object.keys(response.data);
+    //             let totalPrice = this.state.totalPrice;
+    //             ingredients.forEach(ingredient => {
+    //                 const priceAddition = INGREDIENT_PRICES[ingredient];
+    //                 const pricePerIng = response.data[ingredient] * priceAddition;
+    //                 totalPrice = totalPrice + pricePerIng;
+    //                 console.log(totalPrice);
+    //             });
+    //             this.setState({ ingredients: response.data, totalPrice: totalPrice });
+    //             this.updatePurchaseState(response.data);
+    //         })
+    //         .catch(error => {
+    //             this.setState({ errorMode: true });
+    //         });
+    // }
 
     updatePurchaseState(updatedIngredients) {
         const ingredients = {
@@ -81,7 +81,7 @@ class BurgerBuilder extends Component {
         updatedIngredients[type] = updatedCount;
         const priceDeduction = INGREDIENT_PRICES[type];
         const oldPrice = this.state.totalPrice;
-        const updatedPrice = oldPrice - priceDeduction;name
+        const updatedPrice = oldPrice - priceDeduction;
         this.setState({ ingredients: updatedIngredients, totalPrice: updatedPrice });
         this.updatePurchaseState(updatedIngredients);
     }
