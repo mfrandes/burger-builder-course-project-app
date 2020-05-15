@@ -5,8 +5,8 @@ const initialState = {
     loading: false
 };
 
-const reducer = (state = initialState, ation) => {
-    switch (ation.type) {
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
         case actionTypes.PURCHASE_BURGER_SUCCES:
             const newOrder = {
                 ...action.orderData,
