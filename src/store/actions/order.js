@@ -15,10 +15,16 @@ export const purchaseBurgerFail = (error) => {
         error
     };
 };
+export const purchaseBurgerStart = () => {
+    return {
+        type: actionTypes.PURCHASE_BURGER_START
+    };
+};
 
-export const purchaseBurgerStart = (orderData) => {
-    return dispatchEvent => {
-        Axios.post('/orders.json', order)
+export const purchaseBurger = (orderData) => {
+    return dispatch => {
+        dispatch(purchaseBurgerStart());
+        Axios.post('/orders.json', orderData)
             .then(response => {
                 dispatch(purchaseBurgerSucces(response.data, orderData));
             })
