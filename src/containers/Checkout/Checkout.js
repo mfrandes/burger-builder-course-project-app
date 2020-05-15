@@ -19,26 +19,13 @@ class Checkout extends Component {
       this.props.history.push(this.props.match.path + '/contact-data');
    }
 
-   componentWillMount() {
-      const query = new URLSearchParams(this.props.location.search);
-      const ingredients = {};
-      let price = 0;
-      for (const param of query.entries()) {
-         if (param[0] === 'price') {
-            price = +param[1];
-         } else {
-            ingredients[param[0]] = +param[1];
-         }
-      }
-
-      this.setState({ ingredients: ingredients, price: price })
-   }
-
    render() {
       let summary = <Redirect to="/" />
       if (this.props.ings) {
+         const purchasedRedirect = this.props.purchased ? <Redirect to='/' /> : null;
          summary = (
             <div>
+               {purchasedRedirect}
                <CheckoutSummary
                   checkoutContinue={this.checkoutContinueHandler}
                   checkoutCancel={this.checkoutCancelHandler}
@@ -56,6 +43,7 @@ class Checkout extends Component {
 const mapStateToProps = state => {
    return {
       ings: state.burgerBuilder.ingredients,
+      purchased: state.order.purchased
    }
 }
 
