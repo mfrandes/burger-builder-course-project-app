@@ -55,8 +55,6 @@ const mapStateToProps = state => {
 }
 
 const mapDisptachToProps = dispatch => {
-  console.log('Bazinga!');
-
   return {
     onTryAutoSignin: () => dispatch(actions.authCheckState())
   }

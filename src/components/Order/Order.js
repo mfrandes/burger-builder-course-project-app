@@ -20,8 +20,6 @@ const order = (props) => {
         >{ingredient.name} ({ingredient.amount})</span>
         
     ));
-    console.log(ingredientOutput);
-    
     return (
         <div className={classes.Order}>
             <p>Ingredients: {ingredientOutput}</p>
